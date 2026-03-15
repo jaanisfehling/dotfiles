@@ -824,18 +824,22 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
-  {
-    'sainnhe/sonokai',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.sonokai_enable_italic = true
-      vim.g.sonokai_style = 'default'
-      vim.cmd.colorscheme 'sonokai'
-    end,
-  },
+  -- Colorscheme
+  --
+  -- {
+  --   'sainnhe/sonokai',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     -- Optionally configure and load the colorscheme
+  --     -- directly inside the plugin declaration.
+  --     vim.g.sonokai_enable_italic = true
+  --     vim.g.sonokai_style = 'default'
+  --     vim.cmd.colorscheme 'sonokai'
+  --   end,
+  -- },
+  'shaunsingh/nord.nvim',
+
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
