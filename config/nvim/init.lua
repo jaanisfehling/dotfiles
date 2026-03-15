@@ -368,7 +368,7 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       { 'williamboman/mason-lspconfig.nvim', enable = false },
-      { 'WhoIsSethDaniel/mason-tool-installer.nvim', enable = false},
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim', enable = false },
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -519,20 +519,20 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-	nixd = {},
-	bashls = {},
-	pyright = {},
-	ts_ls = {},
-	jsonls = {},
-	yamlls = {},
-	html = {},
-	cssls = {},
-	taplo = {},
-	marksman = {},
-	rust_analyzer = {},
-	clangd = {},
-	cmake = {},
-	hls = {},
+        nixd = {},
+        bashls = {},
+        pyright = {},
+        ts_ls = {},
+        jsonls = {},
+        yamlls = {},
+        html = {},
+        cssls = {},
+        taplo = {},
+        marksman = {},
+        rust_analyzer = {},
+        clangd = {},
+        cmake = {},
+        hls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -547,12 +547,13 @@ require('lazy').setup({
             },
           },
         },
+        stylua = {},
       }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
+      -- local ensure_installed = vim.tbl_keys(servers or {})
+      -- vim.list_extend(ensure_installed, {
+      --   'stylua', -- Used to format Lua code
+      -- })
       -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       -- require('mason-lspconfig').setup {
@@ -568,9 +569,9 @@ require('lazy').setup({
       --   },
       -- }
       for server, opts in pairs(servers) do
-	opts.capabilities = capabilities
-	vim.lsp.config(server, opts)
-	vim.lsp.enable(server)
+        opts.capabilities = capabilities
+        vim.lsp.config(server, opts)
+        vim.lsp.enable(server)
       end
     end,
   },
@@ -595,9 +596,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = {
-
-        }
+        local disable_filetypes = {}
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -610,34 +609,34 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
-        lua = { "stylua" },
+        lua = { 'stylua' },
 
-        nix = { "alejandra" },
+        nix = { 'alejandra' },
 
-        sh = { "shfmt" },
-        bash = { "shfmt" },
-        zsh = { "shfmt" },
+        sh = { 'shfmt' },
+        bash = { 'shfmt' },
+        zsh = { 'shfmt' },
 
-        python = { "ruff_format" },
+        python = { 'ruff_format' },
 
-        javascript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescript = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        json = { "prettierd" },
-        yaml = { "prettierd" },
-        markdown = { "prettierd" },
+        javascript = { 'prettierd' },
+        javascriptreact = { 'prettierd' },
+        typescript = { 'prettierd' },
+        typescriptreact = { 'prettierd' },
+        json = { 'prettierd' },
+        yaml = { 'prettierd' },
+        markdown = { 'prettierd' },
 
-        toml = { "taplo" },
+        toml = { 'taplo' },
 
-        rust = { "rustfmt" },
+        rust = { 'rustfmt' },
 
-        c = { "clang_format" },
-        cpp = { "clang_format" },
-        objc = { "clang_format" },
-        objcpp = { "clang_format" },
+        c = { 'clang_format' },
+        cpp = { 'clang_format' },
+        objc = { 'clang_format' },
+        objcpp = { 'clang_format' },
 
-        haskell = { "fourmolu" },
+        haskell = { 'fourmolu' },
       },
     },
   },
@@ -759,7 +758,12 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -804,7 +808,19 @@ require('lazy').setup({
     main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -957,3 +973,5 @@ end)
 vim.keymap.set('n', '<C-l>', function()
   harpoon:list():next()
 end)
+
+vim.cmd [[colorscheme nord]]
