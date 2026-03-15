@@ -595,7 +595,9 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = {}
+        local disable_filetypes = {
+
+        }
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -608,34 +610,35 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
-          lua = { "stylua" },
+        lua = { "stylua" },
 
-    nix = { "alejandra" },
+        nix = { "alejandra" },
 
-    sh = { "shfmt" },
-    bash = { "shfmt" },
-    zsh = { "shfmt" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        zsh = { "shfmt" },
 
-    python = { "ruff_format" },
+        python = { "ruff_format" },
 
-    javascript = { "prettierd" },
-    javascriptreact = { "prettierd" },
-    typescript = { "prettierd" },
-    typescriptreact = { "prettierd" },
-    json = { "prettierd" },
-    yaml = { "prettierd" },
-    markdown = { "prettierd" },
+        javascript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
+        markdown = { "prettierd" },
 
-    toml = { "taplo" },
+        toml = { "taplo" },
 
-    rust = { "rustfmt" },
+        rust = { "rustfmt" },
 
-    c = { "clang_format" },
-    cpp = { "clang_format" },
-    objc = { "clang_format" },
-    objcpp = { "clang_format" },
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        objc = { "clang_format" },
+        objcpp = { "clang_format" },
 
-    haskell = { "fourmolu" },},
+        haskell = { "fourmolu" },
+      },
     },
   },
 
