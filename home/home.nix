@@ -117,6 +117,8 @@ in {
       nerd-fonts.jetbrains-mono
       discord
       tmux
+      github-copilot-cli
+      zoom-us
     ]
     ++ devToolchains ++ neovimTools;
 
