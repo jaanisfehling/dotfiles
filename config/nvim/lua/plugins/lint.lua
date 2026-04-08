@@ -6,16 +6,15 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
-  sh = { "shellcheck" },
-  bash = { "shellcheck" },
+        sh = { 'shellcheck' },
+        bash = { 'shellcheck' },
 
-  python = { "ruff" },
+        python = { 'ruff' },
 
-  c = { "clangtidy" },
-  cpp = { "clangtidy" },
+        c = { 'clangtidy' },
+        cpp = { 'clangtidy' },
 
-  haskell = { "hlint" },
+        haskell = { 'hlint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

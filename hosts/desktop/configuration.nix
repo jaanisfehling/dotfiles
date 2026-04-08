@@ -58,14 +58,15 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
+  # Configure keymap in Desktop Environment
   services.xserver.xkb = {
     layout = "de";
     variant = "";
+    options = "caps:escape";
   };
 
-  # Configure console keymap
-  console.keyMap = "de";
+  # Use same settings for console
+  console.useXkbConfig = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -98,9 +99,9 @@
     ];
   };
 
-  programs.firefox.enable = true;
-
   nixpkgs.config.allowUnfree = true;
+
+  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

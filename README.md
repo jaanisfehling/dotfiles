@@ -2,6 +2,12 @@
 
 My NixOS dotfiles
 
+How to apply changes:
+
+```
+sudo nixos-rebuild switch --flake .#desktop
+```
+
 How to update the system:
 
 ```
