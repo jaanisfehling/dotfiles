@@ -118,7 +118,7 @@ in {
       discord
       tmux
       github-copilot-cli
-      zoom-us
+      steam-run
     ]
     ++ devToolchains ++ neovimTools;
 
