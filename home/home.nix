@@ -193,6 +193,7 @@ in {
       theme = "Nord";
       font-size = 11;
       cursor-style = "block";
+      cursor-style-blink = "false";
       shell-integration-features = "no-cursor";
       window-padding-balance = true;
       window-padding-x = 0;
