@@ -53,7 +53,6 @@
 
   devToolchains = with pkgs; [
     # General build/debug
-    git
     gcc
     gdb
     cmake
@@ -158,7 +157,8 @@ in {
   #  /etc/profiles/per-user/jaanis/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   # Let Home Manager install and manage itself.
@@ -172,6 +172,9 @@ in {
         email = "jaanisfehling@gmail.com";
       };
       init.defaultBranch = "master";
+    };
+    extraConfig = {
+      core.editor = "nvim";
     };
   };
 
