@@ -94,7 +94,7 @@
   users.users.jaanis = {
     isNormalUser = true;
     description = "Jaanis";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
     ];
   };
@@ -111,14 +111,6 @@
     fastfetch
     curl
   ];
-
-  services.gnome.gnome-keyring.enable = true;
-  programs.seahorse.enable = true;
-
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  security.pam.services.login.enableGnomeKeyring = true;
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -146,4 +138,20 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
+
+  services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
+
+  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  virtualisation.docker.enable = true;
+
+  # (Optional) Enable Docker Rootless mode for better security
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
 }

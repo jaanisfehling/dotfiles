@@ -166,6 +166,7 @@ in {
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     settings = {
       user = {
         name = "Jaanis Fehling";
@@ -173,7 +174,7 @@ in {
       };
       init.defaultBranch = "master";
     };
-    extraConfig = {
+    settings = {
       core.editor = "nvim";
     };
   };
@@ -185,6 +186,7 @@ in {
     # Nice to have for plugin/provider compatibility
     withNodeJs = true;
     withPython3 = true;
+    withRuby = false;
 
     # Ensures LSPs/formatters are visible even when Neovim is launched from a GUI
     extraPackages = neovimTools;
