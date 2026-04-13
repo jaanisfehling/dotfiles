@@ -33,7 +33,6 @@
     vscode-langservers-extracted
     yaml-language-server
     taplo
-    marksman
 
     # Rust
     rust-analyzer

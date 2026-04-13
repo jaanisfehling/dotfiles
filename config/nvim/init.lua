@@ -528,7 +528,6 @@ require('lazy').setup({
         html = {},
         cssls = {},
         taplo = {},
-        marksman = {},
         rust_analyzer = {},
         clangd = {},
         cmake = {},
