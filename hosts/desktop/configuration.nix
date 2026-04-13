@@ -130,6 +130,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.trustedInterfaces = ["docker0"];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -154,4 +155,14 @@
   #   enable = true;
   #   setSocketVariable = true;
   # };
+
+  # CUDA
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true; # or false for older GPUs
+    nvidiaSettings = true;
+  };
+  hardware.nvidia-container-toolkit.enable = true;
 }
