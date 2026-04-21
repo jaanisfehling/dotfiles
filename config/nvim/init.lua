@@ -233,7 +233,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it hunk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -321,6 +321,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
+      vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Telescope live grep' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -929,10 +932,6 @@ require('lazy').setup({
 
 vim.keymap.set('n', '<C-b>', '<Cmd>NvimTreeToggle<CR>')
 
-local builtin = require 'telescope.builtin'
-vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Telescope live grep' })
-
 -- Git diff view
 vim.keymap.set('n', '<C-g>', function()
   if next(require('diffview.lib').views) == nil then
@@ -952,26 +951,29 @@ ft.set('hamlet', { '<!--%s-->', '<!--%s-->' })
 
 local harpoon = require 'harpoon'
 harpoon:setup()
-vim.keymap.set('n', '<C-a>', function()
+vim.keymap.set('n', '<leader>a', function()
   harpoon:list():add()
-end)
-vim.keymap.set('n', '<C-h>', function()
+end, { desc = 'Harpoon [A]dd file' })
+vim.keymap.set('n', '<leader>h', function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
-vim.keymap.set('n', '<C-s>', function()
+end, { desc = '[H]arpoon open list' })
+vim.keymap.set('n', '<leader>k', function()
   harpoon:list():prev()
-end)
-vim.keymap.set('n', '<C-t>', function()
+end, { desc = 'Harpoon previous file' })
+vim.keymap.set('n', '<leader>j', function()
   harpoon:list():next()
-end)
-vim.keymap.set('n', '<C-j>', function()
+end, { desc = 'Harpoon next file' })
+vim.keymap.set('n', '<leader>1', function()
   harpoon:list():select(1)
-end)
-vim.keymap.set('n', '<C-k>', function()
+end, { desc = 'Harpoon go to [1]' })
+vim.keymap.set('n', '<leader>2', function()
   harpoon:list():select(2)
-end)
-vim.keymap.set('n', '<C-l>', function()
+end, { desc = 'Harpoon go to [2]' })
+vim.keymap.set('n', '<leader>3', function()
   harpoon:list():select(3)
-end)
+end, { desc = 'Harpoon go to [3]' })
+vim.keymap.set('n', '<leader>4', function()
+  harpoon:list():select(4)
+end, { desc = 'Harpoon go to [4]' })
 
 vim.cmd [[colorscheme nord]]
